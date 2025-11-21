@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad jQuery HTML</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body { padding: 20px; }
+        .container { max-width: 600px; }
+        #ListajQuery li { font-size: 1.2rem; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Actividad jQuery</h2>
+    <hr>
+
+    <h3>Lista de elementos</h3>
+    <ul id="ListajQuery">
+        <li>Elemento 1: HTML</li>
+        <li>Elemento 2: CSS</li>
+        <li>Elemento 3: JavaScript</li>
+    </ul>
+
+    <hr>
+
+    <h3>Control de Eventos</h3>
+    <button id="btnToggle" class="btn btn-primary">Ocultar lista</button>
+
+    <hr>
+
+    <h3>Uso de algún Plugin (Modal Bootstrap)</h3>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#miModal">
+      Ejecutar Plugin
+    </button>
+</div>
+
+<div class="modal fade" id="miModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Holaaaa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Este es un Plugin de Bootstrap integrado a la página.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Esperamos a que el documento esté listo
+    $(document).ready(function(){
+
+        // --- Manipulación del DOM ---
+        
+        // 1. Cambiar el color de texto de la lista a azul
+        $("#ListajQuery li").css("color", "blue");
+
+        // 2. Agregar dinámicamente un cuarto elemento
+        $("#ListajQuery").append("<li>Elemento 4: jQuery (Agregado dinámicamente)</li>");
+
+
+        // --- Eventos en jQuery ---
+        
+        $("#btnToggle").click(function(){
+            // Alternar visibilidad (slideToggle hace una animación suave hacia arriba/abajo)
+            $("#ListajQuery").slideToggle(function(){
+                // Esta función se ejecuta DESPUÉS de que termina la animación
+                if ($("#ListajQuery").is(":visible")) {
+                    $("#btnToggle").text("Ocultar lista");
+                } else {
+                    $("#btnToggle").text("Mostrar lista");
+                }
+            });
+        });
+
+    });
+</script>
+
+</body>
+</html>
